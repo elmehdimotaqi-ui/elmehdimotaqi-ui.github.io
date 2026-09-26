@@ -9,5 +9,5 @@ export const SITE = {
   // Words per minute used for the reading-time estimate on each post.
   wordsPerMinute: 250,
   // GoatCounter site code, the part before .goatcounter.com. Empty string disables analytics.
-  goatcounter: 'elmehdimotaqi',
+  goatcounter: 'motaqi',
 } as const;
