@@ -10,6 +10,8 @@ interface Props {
 
 const { title, description = SITE.description } = Astro.props;
 const tabTitle = title ? `${title} · ${SITE.title}` : SITE.title;
+// GoatCounter: cookieless visitor counts, only in production builds, never during `npm run dev`.
+const analytics = Boolean(SITE.goatcounter) && import.meta.env.PROD;
 ---
 
 <!doctype html>
@@ -21,6 +23,11 @@ const tabTitle = title ? `${title} · ${SITE.title}` : SITE.title;
     <meta name="description" content={description} />
     <link rel="icon" href="data:," />
     <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
+    {
+      analytics && (
+        <script is:inline data-goatcounter={`https://${SITE.goatcounter}.goatcounter.com/count`} async src="//gc.zgo.at/count.js"></script>
+      )
+    }
   </head>
   <body>
     <header class="site-header">
@@ -38,5 +45,12 @@ const tabTitle = title ? `${title} · ${SITE.title}` : SITE.title;
     <footer class="site-footer">
       © {new Date().getFullYear()} {SITE.author}
     </footer>
+    {
+      analytics && (
+        <noscript>
+          <img src={`https://${SITE.goatcounter}.goatcounter.com/count?p=${encodeURIComponent(Astro.url.pathname)}&t=${encodeURIComponent(title ?? SITE.title)}`} width="1" height="1" alt="" />
+        </noscript>
+      )
+    }
   </body>
 </html>

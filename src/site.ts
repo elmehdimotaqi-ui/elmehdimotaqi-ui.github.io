@@ -8,4 +8,6 @@ export const SITE = {
   description: 'Notes on what I learn while building software.',
   // Words per minute used for the reading-time estimate on each post.
   wordsPerMinute: 250,
+  // GoatCounter site code, the part before .goatcounter.com. Empty string disables analytics.
+  goatcounter: 'elmehdimotaqi',
 } as const;

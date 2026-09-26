@@ -37,7 +37,8 @@ Only `title` and `date` are required.
 
 ## Change the site
 
-- `src/site.ts`: title, author, description, and the words-per-minute used for reading times.
+- `src/site.ts`: title, author, description, the words-per-minute used for reading times, and the
+  GoatCounter code for visitor counts (empty string turns analytics off).
 - `astro.config.mjs`: `site`, the public address of the blog, used by the RSS feed.
 - `src/styles/global.css`: all the styling, in one short file.
 - `src/pages/about.astro`: the About page.
