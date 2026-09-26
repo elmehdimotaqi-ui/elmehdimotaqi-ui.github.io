@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+import { SITE } from '../site';
+
+interface Props {
+  /** The page's own title; the site title is appended in the browser tab. */
+  title?: string;
+  description?: string;
+}
+
+const { title, description = SITE.description } = Astro.props;
+const tabTitle = title ? `${title} · ${SITE.title}` : SITE.title;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{tabTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="data:," />
+    <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-title" href="/">{SITE.title}</a>
+      <nav>
+        <a href="/">Posts</a>
+        <a href="/tags/">Tags</a>
+        <a href="/about/">About</a>
+        <a href="/rss.xml">RSS</a>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      © {new Date().getFullYear()} {SITE.author}
+    </footer>
+  </body>
+</html>

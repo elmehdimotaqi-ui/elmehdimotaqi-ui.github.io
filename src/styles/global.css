@@ -1,0 +1,195 @@
+/*
+  Deliberately plain: black serif text on white, the browser's own link colours,
+  no decoration. The structure of the page does the work.
+*/
+
+html {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 17px;
+  line-height: 1.5;
+  color: #000;
+  background: #fff;
+}
+
+body {
+  max-width: 46rem;
+  margin: 2rem auto 4rem;
+  padding: 0 1rem;
+}
+
+/* Header and footer */
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #000;
+  margin-bottom: 2rem;
+}
+
+.site-header .site-title {
+  font-weight: bold;
+}
+
+.site-header nav a + a {
+  margin-left: 1rem;
+}
+
+.site-footer {
+  margin-top: 4rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid #000;
+  font-size: 0.9rem;
+  color: #444;
+}
+
+/* Text */
+
+h1 {
+  font-size: 1.7rem;
+  line-height: 1.25;
+  margin: 0 0 0.75rem;
+}
+
+h2 {
+  font-size: 1.35rem;
+  margin: 2.5rem 0 0.75rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  margin: 1.75rem 0 0.5rem;
+}
+
+p, ul, ol, table, pre, blockquote {
+  margin: 0 0 1rem;
+}
+
+li {
+  margin-bottom: 0.25rem;
+}
+
+li > p {
+  margin-bottom: 0.5rem;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #bbb;
+  margin: 2.5rem 0;
+}
+
+blockquote {
+  margin-left: 0;
+  padding-left: 1rem;
+  border-left: 3px solid #bbb;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Code */
+
+code, pre, kbd {
+  font-family: Menlo, Consolas, 'DejaVu Sans Mono', 'Liberation Mono', monospace;
+  font-size: 0.88em;
+}
+
+pre {
+  padding: 0.75rem 1rem;
+  overflow-x: auto;
+  line-height: 1.45;
+  border: 1px solid #ddd;
+  /* The highlighter writes its own white background inline; a grey one marks the block. */
+  background-color: #f7f7f7 !important;
+}
+
+pre code {
+  font-size: inherit;
+}
+
+:not(pre) > code {
+  padding: 0 0.2em;
+  background: #f2f2f2;
+}
+
+/* Tables, ruled the way papers rule them: a line above and below, one under the header. */
+
+table {
+  border-collapse: collapse;
+  max-width: 100%;
+}
+
+th, td {
+  padding: 0.35rem 0.75rem 0.35rem 0;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid #ddd;
+}
+
+thead th {
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+}
+
+tbody tr:last-child td {
+  border-bottom: 1px solid #000;
+}
+
+/* Post lists */
+
+.post-list {
+  list-style: none;
+  padding: 0;
+}
+
+.post-list li {
+  margin-bottom: 1rem;
+}
+
+.post-list time {
+  margin-right: 0.75rem;
+  color: #444;
+  font-variant-numeric: tabular-nums;
+}
+
+.post-list .summary {
+  display: block;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+/* A post's head matter */
+
+.lede {
+  font-style: italic;
+}
+
+.post-meta {
+  margin-bottom: 1.5rem;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.toc {
+  margin-bottom: 2.5rem;
+  font-size: 0.95rem;
+}
+
+.toc summary {
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.toc ul {
+  margin: 0.25rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.toc li {
+  margin: 0.15rem 0;
+}

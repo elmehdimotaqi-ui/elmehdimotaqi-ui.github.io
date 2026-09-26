@@ -1,0 +1,23 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getTags, tagUrl } from '../../lib/posts';
+
+const tags = await getTags();
+---
+
+<Base title="Tags">
+  <h1>Tags</h1>
+  {
+    tags.length === 0 ? (
+      <p>No tags yet.</p>
+    ) : (
+      <ul>
+        {tags.map(({ tag, count }) => (
+          <li>
+            <a href={tagUrl(tag)}>{tag}</a> ({count})
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</Base>

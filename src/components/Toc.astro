@@ -1,0 +1,42 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+
+// Sections (##) with their subsections (###). Deeper headings are left out.
+type Item = { slug: string; text: string; children: Item[] };
+const items: Item[] = [];
+for (const heading of headings) {
+  const item = { slug: heading.slug, text: heading.text, children: [] };
+  if (heading.depth === 2) items.push(item);
+  else if (heading.depth === 3) items.at(-1)?.children.push(item);
+}
+---
+
+{
+  items.length > 1 && (
+    <details class="toc" open>
+      <summary>Contents</summary>
+      <ul>
+        {items.map((item) => (
+          <li>
+            <a href={`#${item.slug}`}>{item.text}</a>
+            {item.children.length > 0 && (
+              <ul>
+                {item.children.map((child) => (
+                  <li>
+                    <a href={`#${child.slug}`}>{child.text}</a>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </li>
+        ))}
+      </ul>
+    </details>
+  )
+}

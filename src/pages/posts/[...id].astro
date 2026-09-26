@@ -1,0 +1,46 @@
+---
+import { render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Toc from '../../components/Toc.astro';
+import { formatDate, getPosts, readingTime, tagUrl, type Post } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const { title, description, date, updated, tags } = post.data;
+---
+
+<Base title={title} description={description}>
+  <article>
+    <header>
+      <h1>{title}</h1>
+      {description && <p class="lede">{description}</p>}
+      <p class="post-meta">
+        <time datetime={formatDate(date)}>{formatDate(date)}</time>
+        {updated && <>{' · updated '}<time datetime={formatDate(updated)}>{formatDate(updated)}</time></>}
+        {' · '}{readingTime(post.body)}
+        {tags.length > 0 && (
+          <>
+            {' · '}
+            {tags.map((tag, i) => (
+              <>
+                {i > 0 && ', '}
+                <a href={tagUrl(tag)}>{tag}</a>
+              </>
+            ))}
+          </>
+        )}
+      </p>
+    </header>
+    <Toc headings={headings} />
+    <Content />
+  </article>
+</Base>
