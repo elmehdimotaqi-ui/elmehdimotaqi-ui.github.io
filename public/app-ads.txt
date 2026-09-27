@@ -1,0 +1,4 @@
+# Authorized sellers of ad inventory in Elmehdi Motaqi's apps.
+# https://iabtechlab.com/ads-txt/ — AdMob crawls this from the App Store listing's
+# developer website, so the Marketing URL of every app must be this site's root.
+google.com, pub-6842456340557556, DIRECT, f08c47fec0942fa0
